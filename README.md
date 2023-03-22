@@ -1,4 +1,4 @@
-![GitHub repo size](https://img.shields.io/github/repo-size/spook/sshping)
+![GitHub repo size](https://img.shields.io/github/repo-size/prestevez/sshping)
 
 # sshping
 ssh-based ping: measure character-echo latency and bandwidth for an interactive ssh session
@@ -148,3 +148,34 @@ Or you can directly install on the current system with:
 
 Enjoy!
 
+### Docker
+
+Pull from docker
+
+```
+docker pull prestevez/sshping
+```
+
+Or build with docker
+
+```
+git clone git@github.com:prestevez/sshping.git
+cd sshping
+docker build . -t my_sshping_image
+```
+
+Use container
+
+```
+docker run -it --rm prestevez/sshping user@server
+
+```
+
+Pass ssh config file to container
+
+```
+docker run -it --rm \
+      --mount type=bind,source=$HOME/.ssh,target=/home/sshpinger/.ssh,readonly \
+      prestevez/sshping user@server
+
+```
